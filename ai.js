@@ -43,19 +43,22 @@
   
   function stateBoard(board, player) {
     var opponent = O.nextPlayer(player);
-    return $.map(board, function (v) {return (v == player?1:(v == opponent?-1:0));}));
+    return $.map(board, function (v) {return (v == player?1:(v == opponent?-1:0));});
   }
 
   O.registerAI({
     findTheBestMove: function (gameTree) {
       console.log(gameTree,stateBoard(gameTree.board));
-      
-      agent.act(stateBoard(gameTree.board));
+      //while(true) {
+        var action = agent.act(stateBoard(gameTree.board));
+        //if(
+      //}
       var scores =
         gameTree.moves.map(function (m) {
           return scoreBoard(O.force(m.gameTreePromise).board, gameTree.player);
         });
       var maxScore = Math.max.apply(null, scores);
+      
       return gameTree.moves[scores.indexOf(maxScore)]
     }
   });
