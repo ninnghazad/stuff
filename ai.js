@@ -1,6 +1,10 @@
 (function () {
-  var O = othello;
 
+  var O = othello;
+  $.getScript('http://cs.stanford.edu/people/karpathy/convnetjs/build/convnet-min.js', function()
+  {
+      console.log("convnet loaded");
+  });
   function sum(ns) {
     return ns.reduce(function (t, n) {return t + n;});
   }
