@@ -1,11 +1,13 @@
 (function () {
 
   var O = othello;
+  var brain;
   $.getScript('http://cs.stanford.edu/people/karpathy/convnetjs/build/convnet-min.js', function()
   {
       console.log("convnet loaded");
+      brain = new deepqlearn.Brain(64, 64); // 3 inputs, 2 possible outputs (0,1)
+  
     });
-  var brain = new deepqlearn.Brain(3, 2); // 3 inputs, 2 possible outputs (0,1)
   var state = [Math.random(), Math.random(), Math.random()];
   for(var k=0;k<10000;k++) {
       var action = brain.forward(state); // returns index of chosen action
