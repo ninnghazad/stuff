@@ -48,7 +48,7 @@
 
   O.registerAI({
     findTheBestMove: function (gameTree) {
-      console.log(gameTree,stateBoard(gameTree.board));
+      console.log(gameTree,stateBoard(gameTree.board),O);
       //while(true) {
         var action = agent.act(stateBoard(gameTree.board));
         //if(
