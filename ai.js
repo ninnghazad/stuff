@@ -100,7 +100,7 @@
           break;
         } else {
           // bad AI ! *snoutwhack*
-          agent.learn(-1);
+          agent.learn(0);
         }
       }
       
