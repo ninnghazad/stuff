@@ -30,18 +30,22 @@
       
       var json = $.jStorage.get("agent",null);
       
-      if(json != null) {
+      if(json !== null) {
         console.log("agent loading: "+json.length+" bytes");
         json = LZString.decompress(json);
-        agent.fromJSON(json);
-        agent.epsilon = 0.05;
+        try {
+          agent.fromJSON(json);
+          agent.epsilon = 0.05;
+        } catch (err) {
+          $.jStorage.deleteKey("agent");    
+        }
         //agent.alpha = 0;
         
         console.log("agent loaded: "+json.length+" bytes");
       } else {
         console.log("new agent created");
       }
-      
+      delete json;
   })})});
   
   
