@@ -96,7 +96,7 @@
           agent.learn(-1);
         }
       }
-      var json = LZString.compress(agent.toJSON());
+      var json = LZString.compress(JSON.stringify(agent.toJSON()));
       console.log("agent: "+json.length);
       $.jStorage.set("agent",json);
       return gameTree.moves[bestMove]
