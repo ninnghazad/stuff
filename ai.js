@@ -10,7 +10,7 @@
   var agent;
   
 
-  $.getScript('https://raw.githubusercontent.com/karpathy/reinforcejs/master/lib/rl.js', function(d)
+  $.getScript('https://rawgit.com/karpathy/reinforcejs/master/lib/rl.js', function(d)
   {
       console.log("convnet loaded",d);
       agent = new RL.DQNAgent(env, spec); 
