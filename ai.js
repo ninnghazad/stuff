@@ -32,7 +32,7 @@
       
       if(json !== null) {
         console.log("agent loading: "+json.length+" bytes");
-        json = JSON.parse(LZString.decompress(json));
+        json = JSON.parse(LZString.decompressFromUTF16(json));
         try {
           agent.fromJSON(json);
           agent.epsilon = 0.05;
@@ -101,7 +101,7 @@
           agent.learn(-1);
         }
       }
-      var json = LZString.compress(JSON.stringify(agent.toJSON()));
+      var json = LZString.compressToUTF16(JSON.stringify(agent.toJSON()));
       console.log("agent: "+json.length);
       $.jStorage.set("agent",json);
       return gameTree.moves[bestMove]
