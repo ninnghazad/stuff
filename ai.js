@@ -84,7 +84,7 @@
         if(legalMove) {
           var newScore = scoreBoard(O.force(move.gameTreePromise).board, gameTree.player);
           var reward = newScore - score;
-          console.log(gameTree.player+" # reward: "+reward+" after "+tries+" tries.");
+          console.log(gameTree.player+" # reward: "+reward+" after "+tries+" tries, score: "+newScore);
           agent.learn(newScore - score);
           break;
         } else {
@@ -92,7 +92,7 @@
           agent.learn(-1);
         }
       }
-      console.log(agent.toJSON());
+      console.log("agent: "+agent.toJSON());
       return gameTree.moves[bestMove]
     }
   });
