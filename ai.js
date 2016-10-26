@@ -19,7 +19,7 @@
   var agent;
   
 
-  $.getScript('http://github.com/andris9/jStorage/raw/master/jstorage.js', function() {
+  $.getScript('http://rawgit.com/andris9/jStorage/raw/master/jstorage.js', function() {
   $.getScript('https://rawgit.com/karpathy/reinforcejs/master/lib/rl.js', function()
   {
       console.log("convnet loaded",d);
