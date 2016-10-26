@@ -2,10 +2,11 @@
   // https://rawgit.com/ninnghazad/stuff/master/ai.js
   var O = othello;
   var env = {};
+  var moves = [];
   env.getNumStates = function() { return 64; }
   env.getMaxNumActions = function() { return 64; }
   env.allowedActions = function() {
-      return $.map(gameTree.moves,function (v) {
+      return $.map(moves,function (v) {
           return v.y * 8 + v.x;
       });
   }
@@ -18,7 +19,7 @@
   spec.experience_size = 1000; // size of experience
   spec.learning_steps_per_iteration = 5;
   spec.tderror_clamp = 1.0; // for robustness
-  spec.num_hidden_units = 64*64 // number of neurons in hidden layer
+  //spec.num_hidden_units = 64*64 // number of neurons in hidden layer
 
   var agent;
   var counter = 0;
@@ -70,6 +71,7 @@
 
   O.registerAI({
     findTheBestMove: function (gameTree) {
+      moves = gameTree.moves;
       var score = scoreBoard(gameTree.board, gameTree.player);
       //console.log(score,gameTree,stateBoard(gameTree.board,gameTree.player),O);
       var bestMove = 0;
