@@ -41,7 +41,7 @@
         console.log("new agent created");
       }
       
-  })});
+  })})});
   
   
   function sum(ns) {
