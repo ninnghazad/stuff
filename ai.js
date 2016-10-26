@@ -29,7 +29,7 @@
   $.getScript('https://rawgit.com/karpathy/reinforcejs/master/lib/rl.js', function()
   {
       console.log("convnet loaded");
-      agent = new RL.TDAgent(env, spec); 
+      agent = new RL.DQNAgent(env, spec); 
       
       var json = $.jStorage.get("agent",null);
       
