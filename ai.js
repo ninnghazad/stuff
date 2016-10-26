@@ -40,10 +40,17 @@
     return sum($.map(board, function (v) {return v == player;})) -
            sum($.map(board, function (v) {return v == opponent;}));
   }
+  
+  function stateBoard(board, player) {
+    var opponent = O.nextPlayer(player);
+    return $.map(board, function (v) {return (v == player?1:(v == opponent?-1:0));}));
+  }
 
   O.registerAI({
     findTheBestMove: function (gameTree) {
-      console.log(gameTree);
+      console.log(gameTree,stateBoard(gameTree.board));
+      
+      agent.act(stateBoard(gameTree.board));
       var scores =
         gameTree.moves.map(function (m) {
           return scoreBoard(O.force(m.gameTreePromise).board, gameTree.player);
