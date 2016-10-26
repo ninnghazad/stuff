@@ -95,8 +95,9 @@
           agent.learn(-1);
         }
       }
-      
-      $.jStorage.set("agent",agent.toJSON());
+      var json = agent.toJSON();
+      console.log("agent: "+json);
+      $.jStorage.set("agent",json);
       return gameTree.moves[bestMove]
     }
   });
