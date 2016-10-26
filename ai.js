@@ -74,9 +74,12 @@
         }
         if(legalMove) {
           var newScore = scoreBoard(O.force(move.gameTreePromise).board, gameTree.player);
+          var reward = newScore - score;
+          console.log("reward: "+reward+" after "+tries+" tries.");
           agent.learn(newScore - score);
           break;
         } else {
+          // bad AI ! *snoutwhack*
           agent.learn(-1);
         }
       }
