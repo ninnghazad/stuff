@@ -49,7 +49,7 @@
   O.registerAI({
     findTheBestMove: function (gameTree) {
       var score = scoreBoard(gameTree.board, gameTree.player);
-      console.log(score,gameTree,stateBoard(gameTree.board,gameTree.player),O);
+      //console.log(score,gameTree,stateBoard(gameTree.board,gameTree.player),O);
       var bestMove = 0;
       if(gameTree.moves.length < 1) {
         return false;
@@ -75,7 +75,7 @@
         if(legalMove) {
           var newScore = scoreBoard(O.force(move.gameTreePromise).board, gameTree.player);
           var reward = newScore - score;
-          console.log("reward: "+reward+" after "+tries+" tries.");
+          console.log(gameTree.player+" # reward: "+reward+" after "+tries+" tries.");
           agent.learn(newScore - score);
           break;
         } else {
@@ -83,7 +83,7 @@
           agent.learn(-1);
         }
       }
-      console.log(tries,agent.toJSON());
+      console.log(agent.toJSON());
       return gameTree.moves[bestMove]
     }
   });
