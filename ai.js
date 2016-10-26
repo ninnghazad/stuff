@@ -2,9 +2,9 @@
 
   var O = othello;
   var brain;
-  $.getScript('http://cs.stanford.edu/people/karpathy/convnetjs/build/convnet-min.js', function()
+  $.getScript('http://cs.stanford.edu/people/karpathy/convnetjs/build/convnet-min.js', function(d)
   {
-      console.log("convnet loaded");
+      console.log("convnet loaded",d);
       brain = new deepqlearn.Brain(64, 64);  
       console.log("brain created");
   });
