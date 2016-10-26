@@ -9,7 +9,7 @@
   spec.update = 'qlearn'; // qlearn | sarsa
   spec.gamma = 0.9; // discount factor, [0, 1)
   spec.epsilon = 0.2; // initial epsilon for epsilon-greedy policy, [0, 1)
-  spec.alpha = 0.005; // value function learning rate
+  spec.alpha = 0.1; // value function learning rate
   spec.experience_add_every = 5; // number of time steps before we add another experience to replay memory
   spec.experience_size = 1000; // size of experience
   spec.learning_steps_per_iteration = 5;
@@ -24,7 +24,7 @@
   $.getScript('https://rawgit.com/karpathy/reinforcejs/master/lib/rl.js', function()
   {
       console.log("convnet loaded");
-      agent = new RL.DQNAgent(env, spec); 
+      agent = new RL.TDAgent(env, spec); 
       
       var json = $.jStorage.get("agent",null);
       
