@@ -30,6 +30,7 @@
 
   O.registerAI({
     findTheBestMove: function (gameTree) {
+      console.log(gameTree);
       var scores =
         gameTree.moves.map(function (m) {
           return scoreBoard(O.force(m.gameTreePromise).board, gameTree.player);
