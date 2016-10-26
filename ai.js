@@ -4,7 +4,11 @@
   var env = {};
   env.getNumStates = function() { return 64; }
   env.getMaxNumActions = function() { return 64; }
-
+  env.getAllowedActions = function() {
+      return $.map(gameTree.moves,function (v) {
+          return v.y * 8 + v.x;
+      });
+  }
   var spec = {}
   spec.update = 'qlearn'; // qlearn | sarsa
   spec.gamma = 0.9; // discount factor, [0, 1)
