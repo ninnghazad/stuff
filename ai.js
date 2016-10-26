@@ -17,7 +17,7 @@
   spec.num_hidden_units = 64*64 // number of neurons in hidden layer
 
   var agent;
-  
+  var counter = 0;
 
   $.getScript('https://rawgit.com/pieroxy/lz-string/master/libs/lz-string.min.js', function() {
   $.getScript('https://rawgit.com/andris9/jStorage/master/jstorage.js', function() {
@@ -103,9 +103,13 @@
           agent.learn(-1);
         }
       }
-      var json = LZString.compressToUTF16(JSON.stringify(agent.toJSON()));
-      console.log("agent: "+json.length);
-      $.jStorage.set("agent",json);
+      
+      if(counter % 100 == 0) {
+        var json = LZString.compressToUTF16(JSON.stringify(agent.toJSON()));
+        console.log("agent: "+json.length);
+        $.jStorage.set("agent",json);
+      }
+      counter++;
       return gameTree.moves[bestMove]
     }
   });
