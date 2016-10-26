@@ -22,7 +22,9 @@
   $.getScript('https://rawgit.com/andris9/jStorage/master/jstorage.js', function() {
   $.getScript('https://rawgit.com/karpathy/reinforcejs/master/lib/rl.js', function()
   {
-      console.log("convnet loaded");
+    $.jStorage.set("test",123);
+    
+      console.log("convnet loaded",$.jStorage.get("test",321););
       agent = new RL.DQNAgent(env, spec); 
       
       var json = $.jStorage.get("agent",null);
