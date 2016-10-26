@@ -49,17 +49,30 @@
   O.registerAI({
     findTheBestMove: function (gameTree) {
       console.log(gameTree,stateBoard(gameTree.board,gameTree.player),O);
-      //while(true) {
+      var score = scoreBoard(gameTree.board, gameTree.player);
+      var bestMove = 0;
+      while(true) {
         var action = agent.act(stateBoard(gameTree.board,gameTree.player));
-        //if(
-      //}
-      var scores =
-        gameTree.moves.map(function (m) {
-          return scoreBoard(O.force(m.gameTreePromise).board, gameTree.player);
-        });
-      var maxScore = Math.max.apply(null, scores);
-      
-      return gameTree.moves[scores.indexOf(maxScore)]
+        var x = action % 8;
+        var y = (action - x) / 8;
+        var move;
+        for(var i in gameTree.moves) {
+            move = gameTree.moves[i];
+            if(move.x == x && move.y == y) {
+                bestMove = i;
+                legalMove = true;
+                break;
+            }
+        }
+        if(legalMove) {
+          var newScore = scoreBoard(O.force(move.gameTreePromise).board, gameTree.player);
+          agent.learn(newScore - score);
+          break;
+        } else {
+          agent.learn(-1);
+        }
+      }
+      return gameTree.moves[bestMove]
     }
   });
 })();
