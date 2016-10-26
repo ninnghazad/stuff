@@ -28,10 +28,10 @@
       console.log("convnet loaded",$.jStorage.get("test",321));
       agent = new RL.DQNAgent(env, spec); 
       
-      var json = LZString.decompress($.jStorage.get("agent",null));
+      var json = $.jStorage.get("agent",null);
   
       if(json != null) {
-        
+        json = LZString.decompress(json);
         agent.fromJSON(json);
         agent.epsilon = 0.05;
         //agent.alpha = 0;
