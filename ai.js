@@ -24,7 +24,7 @@
   {
     $.jStorage.set("test",123);
     
-      console.log("convnet loaded",$.jStorage.get("test",321););
+      console.log("convnet loaded",$.jStorage.get("test",321));
       agent = new RL.DQNAgent(env, spec); 
       
       var json = $.jStorage.get("agent",null);
