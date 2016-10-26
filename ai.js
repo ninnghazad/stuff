@@ -48,14 +48,15 @@
 
   O.registerAI({
     findTheBestMove: function (gameTree) {
-      console.log(gameTree,stateBoard(gameTree.board,gameTree.player),O);
       var score = scoreBoard(gameTree.board, gameTree.player);
+      console.log(score,gameTree,stateBoard(gameTree.board,gameTree.player),O);
       var bestMove = 0;
       while(true) {
         var action = agent.act(stateBoard(gameTree.board,gameTree.player));
         var x = action % 8;
         var y = (action - x) / 8;
         var move;
+        var legalMove = false;
         for(var i in gameTree.moves) {
             move = gameTree.moves[i];
             if(move.x == x && move.y == y) {
