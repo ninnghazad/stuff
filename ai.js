@@ -96,7 +96,7 @@
         }
       }
       var json = JSON.stringify(agent.toJSON());
-      console.log("agent: "+json);
+      console.log("agent: "+json.length);
       $.jStorage.set("agent",json);
       return gameTree.moves[bestMove]
     }
