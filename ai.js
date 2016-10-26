@@ -1,5 +1,5 @@
 (function () {
-
+  // https://rawgit.com/ninnghazad/stuff/master/ai.js
   var O = othello;
   var env = {};
   env.getNumStates = function() { return 64; }
