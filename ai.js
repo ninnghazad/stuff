@@ -23,9 +23,7 @@
   $.getScript('https://rawgit.com/andris9/jStorage/master/jstorage.js', function() {
   $.getScript('https://rawgit.com/karpathy/reinforcejs/master/lib/rl.js', function()
   {
-    $.jStorage.set("test","test");
-    
-      console.log("convnet loaded",$.jStorage.get("test",321));
+      console.log("convnet loaded");
       agent = new RL.DQNAgent(env, spec); 
       
       var json = $.jStorage.get("agent",null);
@@ -37,11 +35,11 @@
         json = JSON.parse(json);
         try {
           agent.fromJSON(json);
-          agent.epsilon = 0.05;
+          //agent.epsilon = 0.05;
+          //agent.alpha = 0;
         } catch (err) {
           $.jStorage.deleteKey("agent");    
         }
-        //agent.alpha = 0;
         
         console.log("agent loaded: "+json.length+" bytes");
       } else {
