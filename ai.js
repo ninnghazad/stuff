@@ -73,6 +73,7 @@
           agent.learn(-1);
         }
       }
+      console.log(agent.toJSON());
       return gameTree.moves[bestMove]
     }
   });
