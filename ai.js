@@ -51,6 +51,11 @@
       var score = scoreBoard(gameTree.board, gameTree.player);
       console.log(score,gameTree,stateBoard(gameTree.board,gameTree.player),O);
       var bestMove = 0;
+      if(gameTree.moves.length < 1) {
+        return false;
+      } else if(gameTree.moves.length == 1) {
+        return gameTree.moves[0];
+      }
       while(true) {
         var action = agent.act(stateBoard(gameTree.board,gameTree.player));
         var x = action % 8;
