@@ -19,25 +19,26 @@
   var agent;
   
 
-  $.getScript('https://rawgit.com/karpathy/reinforcejs/master/lib/rl.js', function(d)
+  $.getScript('http://github.com/andris9/jStorage/raw/master/jstorage.js', function() {
+  $.getScript('https://rawgit.com/karpathy/reinforcejs/master/lib/rl.js', function()
   {
       console.log("convnet loaded",d);
       agent = new RL.DQNAgent(env, spec); 
-      console.log("agent created");
-    
-    /*
-      $.getJSON( "agentzoo/wateragent.json", function( data ) {
-        var agent = w.agents[0].brain;
-        agent.fromJSON(data); // corss your fingers...
-        // set epsilon to be much lower for more optimal behavior
+      
+      var json = $.jStorage.get("agent",null);
+  
+      if(json != null) {
+        
+        agent.fromJSON(json);
         agent.epsilon = 0.05;
-        $("#slider").slider('value', agent.epsilon);
-        $("#eps").html(agent.epsilon.toFixed(2));
-        // kill learning rate to not learn
-        agent.alpha = 0;
-      });
-    */
-  });
+        //agent.alpha = 0;
+        
+        console.log("agent loaded");
+      } else {
+        console.log("new agent created");
+      }
+      
+  })});
   
   
   function sum(ns) {
@@ -92,7 +93,8 @@
           agent.learn(-1);
         }
       }
-      console.log("agent: "+agent.toJSON());
+      
+      $.jStorage.set("agent",agent.toJSON());
       return gameTree.moves[bestMove]
     }
   });
