@@ -15,6 +15,19 @@
       console.log("convnet loaded",d);
       agent = new RL.DQNAgent(env, spec); 
       console.log("agent created");
+    
+    /*
+      $.getJSON( "agentzoo/wateragent.json", function( data ) {
+        var agent = w.agents[0].brain;
+        agent.fromJSON(data); // corss your fingers...
+        // set epsilon to be much lower for more optimal behavior
+        agent.epsilon = 0.05;
+        $("#slider").slider('value', agent.epsilon);
+        $("#eps").html(agent.epsilon.toFixed(2));
+        // kill learning rate to not learn
+        agent.alpha = 0;
+      });
+    */
   });
   
   
