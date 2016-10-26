@@ -1,25 +1,22 @@
 (function () {
 
   var O = othello;
-  var brain;
-  $.getScript('http://cs.stanford.edu/people/karpathy/convnetjs/build/convnet-min.js', function(d)
+  var env = {};
+  env.getNumStates = function() { return 64; }
+  env.getMaxNumActions = function() { return 64; }
+
+  // create the DQN agent
+  var spec = { alpha: 0.01 } // see full options on DQN page
+  var agent;
+  
+
+  $.getScript('https://raw.githubusercontent.com/karpathy/reinforcejs/master/lib/rl.js', function(d)
   {
       console.log("convnet loaded",d);
-      brain = new deepqlearn.Brain(64, 64);  
-      console.log("brain created");
+      agent = new RL.DQNAgent(env, spec); 
+      console.log("agent created");
   });
-  /*
-  var state = [Math.random(), Math.random(), Math.random()];
-  for(var k=0;k<10000;k++) {
-      var action = brain.forward(state); // returns index of chosen action
-      var reward = action === 0 ? 1.0 : 0.0;
-      brain.backward([reward]); // <-- learning magic happens here
-      state[Math.floor(Math.random()*3)] += Math.random()*2-0.5;
-  }*/
-  brain.epsilon_test_time = 0.0; // don't make any more random choices
-  brain.learning = false;
-  // get an optimal action from the learned policy
-  //var action = brain.forward(array_with_num_inputs_numbers);
+  
   
   function sum(ns) {
     return ns.reduce(function (t, n) {return t + n;});
