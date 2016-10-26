@@ -72,6 +72,7 @@
   O.registerAI({
     findTheBestMove: function (gameTree) {
       moves = gameTree.moves;
+      console.log(gameTree.player+": "+moves.length+" moves, "+env.allowedActions().length+" actions.");
       var score = scoreBoard(gameTree.board, gameTree.player);
       //console.log(score,gameTree,stateBoard(gameTree.board,gameTree.player),O);
       var bestMove = 0;
