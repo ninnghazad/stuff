@@ -4,7 +4,7 @@
   var env = {};
   env.getNumStates = function() { return 64; }
   env.getMaxNumActions = function() { return 64; }
-  env.getAllowedActions = function() {
+  env.allowedActions = function() {
       return $.map(gameTree.moves,function (v) {
           return v.y * 8 + v.x;
       });
