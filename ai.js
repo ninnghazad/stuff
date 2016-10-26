@@ -31,8 +31,10 @@
       var json = $.jStorage.get("agent",null);
       
       if(json !== null) {
-        console.log("agent loading: "+json.length+" bytes");
-        json = JSON.parse(LZString.decompressFromUTF16(json));
+        console.log("agent decompressing: "+json.length+" bytes");
+        json = LZString.decompressFromUTF16(json);
+        console.log("agent parse: "+json.length+" bytes");
+        json = JSON.parse(json);
         try {
           agent.fromJSON(json);
           agent.epsilon = 0.05;
