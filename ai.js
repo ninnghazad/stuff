@@ -43,6 +43,7 @@
   
   function stateBoard(board, player) {
     var opponent = O.nextPlayer(player);
+    console.log("stateBoard: ",player,opponent);
     return $.map(board, function (v) {return (v == player?1:(v == opponent?-1:0));});
   }
 
