@@ -43,7 +43,6 @@
   
   function stateBoard(board, player) {
     var opponent = O.nextPlayer(player);
-    console.log("stateBoard: ",player,opponent);
     return $.map(board, function (v) {return (v == player?1:(v == opponent?-1:0));});
   }
 
@@ -57,7 +56,9 @@
       } else if(gameTree.moves.length == 1) {
         return gameTree.moves[0];
       }
+      var tries = 0;
       while(true) {
+        ++tries;
         var action = agent.act(stateBoard(gameTree.board,gameTree.player));
         var x = action % 8;
         var y = (action - x) / 8;
@@ -79,7 +80,7 @@
           agent.learn(-1);
         }
       }
-      console.log(agent.toJSON());
+      console.log(tries,agent.toJSON());
       return gameTree.moves[bestMove]
     }
   });
