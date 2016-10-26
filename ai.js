@@ -29,14 +29,15 @@
       agent = new RL.DQNAgent(env, spec); 
       
       var json = $.jStorage.get("agent",null);
-  
+      
       if(json != null) {
+        console.log("agent loading: "+json.length+" bytes");
         json = LZString.decompress(json);
         agent.fromJSON(json);
         agent.epsilon = 0.05;
         //agent.alpha = 0;
         
-        console.log("agent loaded");
+        console.log("agent loaded: "+json.length+" bytes");
       } else {
         console.log("new agent created");
       }
